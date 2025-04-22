@@ -18,3 +18,12 @@ git clone https://github.com/luyi0619/coco.git
 ```
 ./compile.sh
 ```
+
+# Deployment on ubuntu22.04
+```
+sudo apt-get update
+sudo apt-get install -y zip make cmake g++ libjemalloc-dev libboost-dev libgoogle-glog-dev
+./compile.sh
+
+
+```
