@@ -25,5 +25,8 @@ sudo apt-get update
 sudo apt-get install -y zip make cmake g++ libjemalloc-dev libboost-dev libgoogle-glog-dev
 ./compile.sh
 
-
+# test
+./testTPCCDatabase
+./testYCSBDatabase
+./testSiloRWKey
 ```
