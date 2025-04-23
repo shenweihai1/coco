@@ -100,7 +100,7 @@ public:
 
         count++;
 
-        process_request();
+        process_request(); // a start point!
 
         if (!partitioner->is_backup()) {
           // backup node stands by for replication

@@ -9,6 +9,8 @@
 #include <numeric>
 #include <string>
 
+using namespace std;
+
 namespace coco {
 
 class Partitioner {

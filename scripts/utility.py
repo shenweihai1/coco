@@ -5,7 +5,7 @@ def load_ips(ip_file_path):
     ips = [line.strip().split('\t') for line in ip_file if line.startswith('#') == False]
     return ips
 
-def get_cmd_string(id, ips, port):
+def get_cmd_string(id, ips, port_base):
     n_nodes = len(ips)
     assert id < n_nodes, 'id should be less than length of ips'
     cmd = ''
@@ -13,7 +13,7 @@ def get_cmd_string(id, ips, port):
         cmd += ';' if i > 0 else ''
         (internal_ip, external_ip) = ips[i]
         if id == i:
-            cmd += internal_ip + ':' + str(port)
+            cmd += internal_ip + ':' + str(port_base+i)
         else:
-            cmd += external_ip + ':' + str(port)
+            cmd += external_ip + ':' + str(port_base+i)
     return cmd

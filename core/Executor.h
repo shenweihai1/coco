@@ -61,7 +61,7 @@ public:
 
   void start() override {
 
-    LOG(INFO) << "Executor " << id << " starts.";
+    LOG(INFO) << "ExecutorSilo " << id << " starts.";
 
     StorageType storage;
     uint64_t last_seed = 0;
@@ -77,7 +77,7 @@ public:
     bool retry_transaction = false;
 
     do {
-      process_request();
+      process_request(); // in_queue message?
 
       if (!partitioner->is_backup()) {
         // backup node stands by for replication
@@ -98,7 +98,9 @@ public:
         if (result == TransactionResult::READY_TO_COMMIT) {
           bool commit = protocol.commit(*transaction, messages);
           if (transaction->distributed_transaction) {
-            simulate_2pc_durable_cost();
+            //std::cout<<"simulate here?[Yes, simulate]"<<std::endl;
+            //but how can you really add locks to other partitions? how accurate on abort rate?
+            simulate_2pc_durable_cost(); // not actual 2pc?
           }
           n_network_size.fetch_add(transaction->network_size);
           if (commit) {
@@ -138,7 +140,7 @@ public:
           protocol.abort(*transaction, messages);
           n_abort_no_retry.fetch_add(1);
         }
-      }
+      } // END !partitioner->is_backup()
 
       status = static_cast<ExecutorStatus>(worker_status.load());
     } while (status != ExecutorStatus::STOP);

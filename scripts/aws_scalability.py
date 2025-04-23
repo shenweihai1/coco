@@ -10,29 +10,29 @@ from utility import load_ips
 from utility import get_cmd_string
 
 # repeat experiments for the following times
-REPEAT = 5
+REPEAT = 1
 
-assert len(sys.argv) == 3, "this script expects two parameters"
+num_machines = int(sys.argv[1])
+machine_id = int(sys.argv[2]) 
+port = int(sys.argv[3]) 
 
-machine_id = int(sys.argv[1]) 
-port = int(sys.argv[2]) 
-
-ips = load_ips('ips.txt')
+ips = load_ips('ips.txt.'+str(num_machines))
 
 n_machines = len(ips)
-
-assert n_machines == 16, "we are expecting there is 16 machines."
 
 threads = 12
 batch_size = 10000
 
+
+# id and servers
+# What's difference between id and servers 
 def print_ycsb():
     
   read_write_ratio = 80
   zipf = 0.0
   keys = 40000
-  cross_ratios = [0, 1, 5, 10, 20]
-  n_nodes = [16, 14, 12, 10, 8, 6, 4, 2]
+  cross_ratios = [5]
+  n_nodes = [num_machines]
 
   for n_node in n_nodes:
     if machine_id >= n_node:
@@ -41,7 +41,7 @@ def print_ycsb():
     for cross_ratio in cross_ratios:
       for i in range(REPEAT):
         cmd = get_cmd_string(machine_id, ips[:n_node], port + i)
-        print(f'./bench_ycsb --logtostderr=1 --id={machine_id} --servers="{cmd}" --protocol=Aria --partition_num={partition_num} --threads={threads} --batch_size={batch_size} --read_write_ratio={read_write_ratio} --cross_ratio={cross_ratio} --keys={keys} --zipf={zipf} --two_partitions=True')
+        print(f'./bench_ycsb --logtostderr=1 --id={machine_id} --servers="{cmd}" --protocol="Silo" --partition_num={partition_num} --threads={threads} --batch_size={batch_size} --read_write_ratio={read_write_ratio} --cross_ratio={cross_ratio} --keys={keys} --zipf={zipf} --two_partitions=True')
 
 def main():
   # ycsb

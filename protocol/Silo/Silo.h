@@ -191,7 +191,8 @@ private:
           break;
         }
       } else {
-
+        //std::cout<<"remote operator"<<std::endl;
+        //We should do a remote transaction here!
         txn.pendingResponses++;
         auto coordinatorID = partitioner.master_coordinator(partitionId);
         txn.network_size += MessageFactoryType::new_read_validation_message(
@@ -276,6 +277,10 @@ private:
 
       std::size_t replicate_count = 0;
 
+      //std::cout<<"# of total_coordinators:"<<partitioner.total_coordinators()<<std::endl;
+      //std::cout<<"# of replica:"<<partitioner.replica_num() <<std::endl;
+      //std::cout<<"isBackup:"<<partitioner.is_backup()<<",isReplicated:"<<partitioner.is_replicated()<<std::endl;
+      //std::cout<<"coord:"<<txn.coordinator_id<<std::endl;
       for (auto k = 0u; k < partitioner.total_coordinators(); k++) {
 
         // k does not have this partition
@@ -302,8 +307,10 @@ private:
           SiloHelper::unlock(tid, commit_tid);
 
         } else {
+          // is there any real replication???
           txn.pendingResponses++;
           auto coordinatorID = k;
+          std::cout<<"really replication occurs here?"<<std::endl;
           txn.network_size += MessageFactoryType::new_replication_message(
               *messages[coordinatorID], *table, writeKey.get_key(),
               writeKey.get_value(), commit_tid);
@@ -349,6 +356,8 @@ private:
     txn.message_flusher();
     if (wait_response) {
       while (txn.pendingResponses > 0) {
+        //std::cout<<"do we really sync messages"<<std::endl;
+        // We have many messages here!
         txn.remote_request_handler();
       }
     }

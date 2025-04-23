@@ -1,5 +1,16 @@
 # Ignore all
 cmake/*
+CMakeFiles/*
+*.pyc
+googletest*
+test*
+CMake*
+bench_tpcc
+bench_ycsb
+cmake_*
+*.cmake
+*.tcl
+*.a
 
 
 ## Unignore the following extensions

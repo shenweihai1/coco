@@ -39,6 +39,7 @@ int main(int argc, char *argv[]) {
   context.pwv_ycsb_star = FLAGS_pwv_ycsb_star;
   context.global_key_space = FLAGS_global_key_space;
 
+  std::cout<<"# of Partitions:"<<context.partition_num<<std::endl;
   if (FLAGS_zipf > 0) {
     context.isUniform = false;
     if (context.global_key_space) {
