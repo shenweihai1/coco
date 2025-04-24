@@ -53,6 +53,7 @@ public:
           continue;
         }
 
+        // A sinlge dispatcher
         auto message = buffered_readers[i].next_message();
 
         if (message == nullptr) {

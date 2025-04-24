@@ -98,9 +98,9 @@ private:
     bytes_read = 0;
 
     // read new message
-
     auto bytes_received =
         socket->read_async(buffer + bytes_total, BUFFER_SIZE - bytes_total);
+    //std::cout<<"We really get a value from a socket; and YES:"<<bytes_received<<std::endl;
 
     if (bytes_received > 0) {
       // successful read

@@ -52,6 +52,7 @@ public:
       init_message(messages[i].get(), i);
     }
 
+    std::cout<<"Execute get_message_handlers once"<<std::endl;
     messageHandlers = MessageHandlerType::get_message_handlers();
     message_stats.resize(messageHandlers.size(), 0);
     message_sizes.resize(messageHandlers.size(), 0);

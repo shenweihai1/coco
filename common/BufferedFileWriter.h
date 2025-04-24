@@ -21,7 +21,7 @@ public:
   }
 
   void write(const char *str, long size) {
-
+    std::cout<<"socket write"<<std::endl;
     if (bytes_total + size < BUFFER_SIZE) {
       memcpy(buffer + bytes_total, str, size);
       bytes_total += size;

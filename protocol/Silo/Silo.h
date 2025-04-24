@@ -201,7 +201,7 @@ private:
     }
 
     if (txn.pendingResponses == 0) {
-      txn.local_validated = true;
+      txn.local_validated = true; // Mark it as a remote
     }
 
     sync_messages(txn);
