@@ -774,6 +774,7 @@ public:
   static std::vector<
       std::function<void(MessagePiece, Message &, ITable &, Transaction *)>>
   get_message_handlers() {
+    std::cout<<"get_message_handlers"<<std::endl;
     std::vector<
         std::function<void(MessagePiece, Message &, ITable &, Transaction *)>>
         v;

@@ -62,7 +62,7 @@ public:
 
   void start() override {
 
-    LOG(INFO) << "Executor " << id << " starts.";
+    LOG(INFO) << "Executor (in group commit)" << id << " starts.";
 
     StorageType storage;
     uint64_t last_seed = 0;
@@ -185,6 +185,8 @@ public:
 
       process_request();
       n_complete_workers.fetch_add(1);
+    }else{
+      // Where is the actual replication
     }
   }
 

@@ -30,3 +30,7 @@ sudo apt-get install -y zip make cmake g++ libjemalloc-dev libboost-dev libgoogl
 ./testYCSBDatabase
 ./testSiloRWKey
 ```
+
+# 2 questions left
+1. Where is the code for group-commit replication and replay on the backup?
+2. How to configuration 3-way replication? parameter `replica_group` does not look right.
