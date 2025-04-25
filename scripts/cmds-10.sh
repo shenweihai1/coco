@@ -1,0 +1,10 @@
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-0.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-1.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-2.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-3.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-4.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-5.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-6.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-7.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-8.sh" &
+ssh 127.0.0.1 "ulimit -n 20000;cd coco;bash ./scripts/cmds-10-9.sh" &
