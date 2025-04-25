@@ -536,7 +536,7 @@ public:
   static void replication_request_handler(MessagePiece inputPiece,
                                           Message &responseMessage,
                                           ITable &table, Transaction *txn) {
-
+    std::cout<<"replication-4"<<std::endl;
     DCHECK(inputPiece.get_message_type() ==
            static_cast<uint32_t>(SiloGCMessage::REPLICATION_REQUEST));
     auto table_id = inputPiece.get_table_id();

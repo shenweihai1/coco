@@ -578,7 +578,7 @@ public:
                                           Message &responseMessage,
                                           ITable &table, Transaction *txn) {
 
-    std::cout<<"replication"<<std::endl;
+    std::cout<<"replication-1"<<std::endl;
     DCHECK(inputPiece.get_message_type() ==
            static_cast<uint32_t>(SiloMessage::REPLICATION_REQUEST));
     auto table_id = inputPiece.get_table_id();

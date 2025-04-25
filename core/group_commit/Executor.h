@@ -185,8 +185,6 @@ public:
 
       process_request();
       n_complete_workers.fetch_add(1);
-    }else{
-      // Where is the actual replication
     }
   }
 

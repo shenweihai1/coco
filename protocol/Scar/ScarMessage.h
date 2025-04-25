@@ -619,6 +619,7 @@ public:
                                           Message &responseMessage,
                                           ITable &table, Transaction *txn) {
 
+    std::cout<<"replication-2"<<std::endl;
     DCHECK(inputPiece.get_message_type() ==
            static_cast<uint32_t>(ScarMessage::REPLICATION_REQUEST));
     auto table_id = inputPiece.get_table_id();
@@ -729,6 +730,7 @@ public:
                                               Message &responseMessage,
                                               ITable &table, Transaction *txn) {
 
+    std::cout<<"replication-7"<<std::endl;
     DCHECK(inputPiece.get_message_type() ==
            static_cast<uint32_t>(ScarMessage::RTS_REPLICATION_REQUEST));
     auto table_id = inputPiece.get_table_id();
