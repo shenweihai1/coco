@@ -29,6 +29,13 @@ sudo apt-get install -y zip make cmake g++ libjemalloc-dev libboost-dev libgoogl
 ./testTPCCDatabase
 ./testYCSBDatabase
 ./testSiloRWKey
+
+# generate all commands
+cd ./scripts
+python generater.py
+
+# Run with 48 {24*2} partitions
+bash ./scripts/cmds-2.sh
 ```
 
 # 2 questions left
